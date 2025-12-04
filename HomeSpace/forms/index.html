@@ -1366,6 +1366,34 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+<script>
+document.getElementById("predictForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    let data = {
+        area: +document.getElementById("area").value,
+        bedrooms: +document.getElementById("bedrooms").value,
+        bathrooms: +document.getElementById("bathrooms").value
+    };
+
+    try {
+        let response = await fetch("http://127.0.0.1:8000/predict", {  // your backend URL
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        let result = await response.json();
+
+        document.getElementById("priceOutput").innerText = result.predicted_price;
+        document.getElementById("resultBox").classList.remove("d-none");
+
+    } catch (error) {
+        alert("Server not reachable. Make sure backend is running!");
+        console.error(error);
+    }
+});
+</script>
 
 </body>
 
