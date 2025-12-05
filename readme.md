@@ -129,4 +129,4 @@ document.getElementById('predictForm').addEventListener('submit', async (e) => {
 ```import pickle
 pickle.dump(model, open('model/house_price_model.pkl', 'wb'))
 ```
-4. Start the API server and test predictions.
+4. Start the API server and test predictions. 
